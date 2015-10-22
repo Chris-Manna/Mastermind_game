@@ -1,5 +1,6 @@
 class Board
 	TOTAL_POOL_ARR = ["RED","GREEN","BLUE", "YELLOW","BROWN","ORANGE","BLACK","WHITE"]
+	attr_accessor :guesses_left
 	def initialize()
 		@guesses_left = 12
 		@aligned = 0
@@ -10,51 +11,43 @@ class Board
 		@guess_arr = []
 		
 	end
-	def get_player_choice(choice)
-		@choice = choice
-		#come back to this
-		# 1 Code Breaker
-		# 2 Code Maker
-	end
 	
 	def get_total_pool_str()
-		@TOTAL_POOL_ARR.join(", ")
+		TOTAL_POOL_ARR.join(", ")
 	end
 	
 	def set_color_code()
-		if player_choice == 1
-			code_arr = @TOTAL_POOL_ARR.sample(4)
-		else
-			# find a way to prompt user for the four colors
-			# he wants in his code_arr variable in the case
-			# he is code maker
-			code_arr = Arraynew(4,gets.chomp)
-		end
+			code_arr = TOTAL_POOL_ARR.sample(4)
 	end
 	
-	def get_new_guess
-		@guess_arr << gets.chomp * 4
+	def set_new_guess()
+		4.times { @guess_arr << gets.chomp.upcase }
 	end
 	
-	def set_placement
-		@guess_arr.each_with_index do |elmt, idx|
-			if code_arr[idx] == elmt
-				@aligned += 1
-			elsif code_arr.include?(elmt)
-				not_aligned += 1
+	def check_placement
+		@guess_arr[-4..-1].each_with_index do |elmt, idx|
+			if @code_arr[idx] == elmt
+				puts code_arr[idx]
 			end
+			puts idx
+#				@aligned += 1
+#			elsif @code_arr.include?(elmt)
+#				@not_aligned += 1
+#			end
 		end
-		set_guesses_left
+#		set_guesses_left
 	end
+	
 	def set_guesses_left
 		@guesses_left -= 1
 	end
-	
 	def get_guesses_left
 		@guesses_left
 	end
+
 	def get_aligned
 		@aligned
+	end
 	def get_not_aligned
 		@not_aligned
 	end
