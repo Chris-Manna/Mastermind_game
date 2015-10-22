@@ -1,4 +1,4 @@
-require_relative "Mastermind_game.rb"
+require_relative "board.rb"
 
 def main_method
 	a = Board.new()
