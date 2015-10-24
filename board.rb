@@ -62,6 +62,7 @@ class Board
 	end
 
 ##########################################
+# make a class referee
 	def get_outcome
 		puts winner if get_aligned == 4
 		loser if get_guesses_left == 0
